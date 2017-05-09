@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2017 a las 10:25:51
+-- Tiempo de generación: 09-05-2017 a las 07:47:16
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `lugares` (
+  `id` int(11) NOT NULL,
   `tipo` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `nombre` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `descripcion` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
@@ -37,8 +38,21 @@ CREATE TABLE `lugares` (
 -- Volcado de datos para la tabla `lugares`
 --
 
-INSERT INTO `lugares` (`tipo`, `nombre`, `descripcion`, `imagen`) VALUES
-('Auditorio', '31 K', 'Auditorio - 31 k - 150 personas', '590ed3d81b704-Desert.jpg');
+INSERT INTO `lugares` (`id`, `tipo`, `nombre`, `descripcion`, `imagen`) VALUES
+(1, 'A', 'A', 'A', '1494038249958.jpg'),
+(2, 'B', 'B', 'B', '1494038249958.jpg'),
+(3, 'C', 'C', 'C', '1494038249958.jpg'),
+(4, 'D', 'D', 'D', '1494038249958.jpg'),
+(5, 'E', 'E', 'E', '1494038249958.jpg'),
+(6, 'F', 'F', 'F', '1494038249958.jpg'),
+(7, 'G', 'G', 'G', '1494038249958.jpg'),
+(8, 'H', 'H', 'H', '1494038249958.jpg'),
+(9, 'I', 'I', 'I', '1494038249958.jpg'),
+(10, 'J', 'J', 'J', '1494038249958.jpg'),
+(11, 'K', 'K', 'K', '1494038249958.jpg'),
+(12, 'L', 'L', 'L', '1494038249958.jpg'),
+(13, 'M', 'M', 'M', '1494038249958.jpg'),
+(14, 'N', 'N', 'N', '1494038249958.jpg');
 
 -- --------------------------------------------------------
 
@@ -70,6 +84,12 @@ INSERT INTO `usuarios` (`id`, `usuario`, `password`, `rango`) VALUES
 --
 
 --
+-- Indices de la tabla `lugares`
+--
+ALTER TABLE `lugares`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -79,6 +99,11 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `lugares`
+--
+ALTER TABLE `lugares`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

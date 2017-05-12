@@ -49,10 +49,10 @@
             <div id="navbar" class="navbar-collapse collapse">
               <form class="navbar-form navbar-right" role="form">
                 <div class="form-group">
-                  <input type="text" placeholder="Usuario" id="user" name="user" class="form-control">
+                  <input type="text"  id="user" name="user" class="form-control" placeholder="Usuario" required >
                 </div>
                 <div class="form-group">
-                  <input type="password" placeholder="Password" id="pass" name="pass" class="form-control">
+                  <input type="password"  id="pass" name="pass" class="form-control" placeholder="Password" required  >
                 </div>
                 <button type="button" class="btn btn-primary" onclick='login(1);'>Login</button>   
               </form>
@@ -78,7 +78,11 @@
                       <div class="alert alert-success text-center" id="exito" style="display:none;">
                         <span class="glyphicon glyphicon-ok"> </span><span> Su cuenta ha sido registrada</span>
                       </div>
-                      <form class="form-horizontal" id="formCliente">
+                      <div class="alert alert-danger alert-dismissable text-center" id="fail" style="display:none;">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <span class="glyphicon glyphicon-remove"> </span><span> Ingrese otro username</span>
+                      </div>
+                      <form class="form-horizontal" form name="fvalida" id="formCliente">
                         <div class="form-group">
                           <label for="nombres" class="control-label col-xs-5">Username:</label>
                           <div class="col-xs-5">
@@ -89,13 +93,13 @@
                           <label for="pass" class="control-label col-xs-5">Contraseña:</label>
                           <div class="col-xs-5">
                               <input id="passr" name="pass" type="password" class="form-control" >
-                          </div>
+                          </div>                    
                         </div>
                       </form>
                     </div>
                     <div class="modal-footer">  
                       <button type="button" class="toggle-visibility btn btn-danger" data-target="#post-detailsxxx">Cerrar</button>
-                      <button onclick="registrar();" type="button" class="btn btn-success">Guardar</button>
+                      <button onclick="valida_envia();" type="button" class="btn btn-success">Guardar</button>
                     </div>
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -165,6 +169,31 @@
             });
           });
 
+
+	function valida_envia(){ 
+   	//valido el nombre 
+   	if (document.fvalida.username.value.length==0){ 
+      	alert("Tiene que escribir un username") 
+      	document.fvalida.nombre.focus() 
+      	return 0; 
+   	} 
+
+		//valido la pass
+   	if (document.fvalida.pass.value.length==0){ 
+      	alert("Tiene que escribir una contraseña") 
+      	document.fvalida.nombre.focus() 
+      	return 0; 
+   	} 
+	
+
+   	//el formulario se envia 
+   	registrar();
+}
+
+
+
+
+
           function login(op){
             if (op==1){
               var user = $('#user').val();
@@ -190,6 +219,9 @@
             });
           }       
 
+
+
+
         function registrar(){
             var username=$('#username').val();
             var password=$('#passr').val();
@@ -197,13 +229,15 @@
                     url:'Controlador/UsuarioControlador.php',
                     type:'POST',
                     data:'username='+username+'&password='+password+'&boton=registrar'
+					
                 }).done(function(respuesta){
-                    if (respuesta=='exito') {
+					   if (respuesta=='exito') {
                         $('#exito').show();
                         setTimeout(myFunction, 1900);                        
                     }
-                    else{
-                        alert(respuesta);
+                    else{	
+                        $('#fail').show();
+						
                     }                    
                 });                                    
         } 

@@ -64,7 +64,7 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+  <div class="container">
 
         <div class="row">
 
@@ -78,7 +78,7 @@
                 <div class="list-group">
                     <a href="#" class="list-group-item">Peticiones de Reservas</a>
                     <a href="#" class="list-group-item">Lugares</a>
-                    <a href="#" class="list-group-item">Atención al Cliente</a>
+                    <a href="AtencionCliente.php" class="list-group-item">Atención al Cliente</a>
                 </div>
             </div>
 

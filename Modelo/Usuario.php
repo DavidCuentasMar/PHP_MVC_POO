@@ -26,14 +26,35 @@
 			session_start();
 			session_destroy();
 		}
-		function registrar($username,$password){
+	function registrar($username,$password){
+			
+			$consulta=$this->db->prepare("select * from usuarios where usuario=?");
+			$consulta->bindParam(1,$username);
+			$consulta->execute();
+			
+			
+			
+			if ($consulta->rowCount()== 0 ) {
+				
+				
+				
+		
 			$consulta = $this->db->prepare("INSERT INTO usuarios (usuario, password, rango) VALUES (:user, :pass, :rango)");
 			$consulta->bindParam(':user', $username);
 			$consulta->bindParam(':pass', $password);
 			$consulta->bindParam(':rango', $rango);
 			$rango="mortal";
 			$consulta->execute();
+			
 			return true;
+		
+				
+			}else{
+				return false;
+			}
+			
+			
+			
 
 
 		

@@ -25,9 +25,15 @@
 			unset($LugarObjt);
 		}
 	}else{
-		
-		$LugarObjt = new Lugar();
-		$LugarObjt -> showPlaces();
+		if ($xyz=='ok') {
+					$LugarObjt = new Lugar();
+					$LugarObjt -> showPlaces();
+		}
+		if ($xyz=='auditorios') {
+			$LugarObjt = new Lugar();
+			$LugarObjt -> llenar("auditorio");
+		}
+
 	}
 
 

@@ -21,6 +21,41 @@ class Lugar{
 		}
 		
 	}
+	function llenar($tipo){
+			 $consulta=$this->db->prepare("select * from lugares where tipo='$tipo'");
+			 $consulta->execute(array());
+			 while ($nuevo=$consulta->fetch(PDO::FETCH_ASSOC)){		
+			  	echo '<div class="col-sm-4 col-lg-4 col-md-4">';
+                echo        '<div class="thumbnail">';
+                echo           '<img src="../Vista/imgs/'.$nuevo['imagen'].'" alt="nada" width="1024"  height="768">';
+                echo            '<div class="caption">';
+    			echo                   '<h4><a href="#">'.$nuevo['nombre'].'</a>';
+                echo                '</h4>';
+                echo                '<p>'.$nuevo['descripcion'].'</p>';
+                echo           '</div>';
+                echo        '</div>';
+                echo    '</div>';		 
+
+			//	insetarcaja("$nuevo[nombre]","$nuevo[descripcion]","$nuevo[imagen]");	
+
+
+			 } 
+	}
+	function insetarcaja($nombre, $descripcion,$ruta){
+
+		        echo '<div class="col-sm-4 col-lg-4 col-md-4">';
+                echo        '<div class="thumbnail">';
+                echo           '<img src="../Vista/imgs/<?php echo $ruta ?>" alt="nada" width="1024"  height="768">';
+                echo            '<div class="caption">';
+    			echo                   '<h4><a href="#"><?php echo $nombre ?></a>';
+                echo                '</h4>';
+                echo                '<p><?php echo $descripcion ?></p>';
+                echo           '</div>';
+                echo        '</div>';
+                echo    '</div>';
+	}
+
+
 
 	function showPlaces(){
 		$consulta=$this->db->prepare("select * from lugares");

@@ -70,7 +70,7 @@ font-size: 24px;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">iTuReserva</a>
+                <a class="navbar-brand" href="home.php">iTuReserva</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
 

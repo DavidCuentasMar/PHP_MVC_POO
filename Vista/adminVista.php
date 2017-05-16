@@ -42,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">iTuReserva</a>
+                <a class="navbar-brand" href="home.php">iTuReserva</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <!-- /.navbar-collapse -->
@@ -66,7 +66,7 @@
             </center> 
                 <div class="list-group">
                     <a href="#" class="list-group-item">Reservas</a>
-                    <a href="#" class="list-group-item">Lugares</a>
+                    <a href="#" class="list-group-item" onClick="ir()">Lugares</a>
                     <a href="#" class="list-group-item">Atención al Cliente</a>
                     <a href="" class="list-group-item" data-toggle='modal' data-target='#modallibros' id="abrir-modal-libros">Agregar</a>
                 </div>
@@ -318,6 +318,9 @@
                 window.location.href = "../index.php";
             });
         }
+		function ir(){
+			location.href='vistalugares.php';
+		}
     </script>
 
 </body>

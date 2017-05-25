@@ -79,11 +79,10 @@
             <div class="col-md-9">
                 <div class="row">
                 <?php
-				   require("../Controlador/crearimg.php");
-				   $prueba = new Caja();
-				   $prueba->llenar("campo");
-				   
-				?>
+                    $xyz='salones';
+                   require("../Controlador/LugarControlador.php");
+                   
+                ?>
                 </div>
 
             </div>

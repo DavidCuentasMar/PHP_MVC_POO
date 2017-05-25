@@ -100,7 +100,7 @@ font-size: 24px;
             </center> 
                 <div class="list-group">
                     <a href="#" class="list-group-item">Peticiones de Reservas</a>
-                    <a href="#" class="list-group-item">Lugares</a>
+                    <a href="vistaLugares.php" class="list-group-item">Lugares</a>
                     <a href="#" class="list-group-item">Atención al Cliente</a>
                 </div>
             </div>

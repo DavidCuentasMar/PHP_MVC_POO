@@ -25,12 +25,6 @@
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -79,8 +73,68 @@
                     <a href="#" class="list-group-item">Peticiones de Reservas</a>
                     <a href="#" class="list-group-item" onClick="ir()">Lugares</a>
                     <a href="AtencionCliente.php" class="list-group-item">Atención al Cliente</a>
+                    <?php 
+                        if ($_SESSION['usuario']['rango']=='admin') {
+                            echo '<a href="" class="list-group-item" data-toggle="modal" data-target="#modallibros" id="abrir-modal-libros">Agregar</a>';
+                        }                                               
+                    ?>
                 </div>
             </div>
+            <div class="modal fade" id="modallibros" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h2 class="modal-title">Datos del Sitio</h2>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success text-center" id="exito" style="display:none;">
+                                    <span class="glyphicon glyphicon-ok"> </span><span> Su cuenta ha sido registrada</span>
+                                </div>
+                                <form class="form-horizontal" id="formLugar">
+                                    <div class="form-group">
+                                        <label for="isbn" class="control-label col-xs-5">Categoria: </label>
+                                        <div class="control-label  col-xs-5">
+                                        <select class="form-control" id="tipo" name="tipo">
+                                          <option>Auditorio</option>
+                                          <option>Salon</option>
+                                          <option>Campo</option>
+                                        </select>
+                                        </div> 
+
+                                      </div>                                                 
+                                    <div class="form-group">
+                                        <label for="titulo" class="control-label col-xs-5">Nombre:</label>
+                                        <div class="col-xs-5">
+                                            <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese nombre">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="autor" class="control-label col-xs-5">Descripcion:</label>
+                                        <div class="col-xs-5">
+                                            <input id="descripcion" name="descripcion"  type="text" class="form-control" placeholder="Ingrese descripcion">
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <label for="imagen" class="control-label col-xs-5">imagen:</label>
+                                        <div class="col-xs-5">
+                                            <input id="imagen" name="imagen" type="file">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-xs-5">
+                                            <input name="boton" type="hidden" value="guardar">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">  
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-success" onclick="guardar();">Guardar</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
 
             <div class="col-md-9">
 
@@ -153,6 +207,29 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/vendor/bootstrap.min.js"></script>
     <script>
+         function guardar(){
+          var formData = new FormData($("#formLugar")[0]);
+          $.ajax({
+            url:'../Controlador/LugarControlador.php',
+            type:'POST',
+            data:formData,
+            cache:false,
+            processData:false,
+            contentType:false,
+          }).done(function(resp){
+            alert(resp);
+            /*if(resp==='exito'){
+              $('#exito').show();
+              lista_libros('',1);
+              $("#formLibro")[0].reset();
+            }
+            else{
+              alert(resp);
+            }*/
+            
+          });
+          
+        }
         function logout()
         {
             $.ajax({

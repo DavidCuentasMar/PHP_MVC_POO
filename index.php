@@ -211,7 +211,7 @@
                     location.href='Vista/loginConfirm.php';
                 }else{
                     if (resp=='admin') {
-                        location.href='Vista/adminVista.php';
+                        location.href='Vista/home.php';
                     }else{
                         location.href='Vista/home.php';
                     }                                    

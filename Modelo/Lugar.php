@@ -70,21 +70,17 @@ class Lugar{
 			for ($i=$items-1; $i >= ($items-6); $i--) { 
 				echo '<div class="col-sm-4 col-lg-4 col-md-4">';
 		        echo                '<div class="thumbnail">';
-		        echo                    '<img src="http://placehold.it/320x150" alt="">';
+		        echo  				'<div class="imgHome">';
+		        echo                    '<img src="../Vista/imgs/'.$resultado[$i]['imagen'].'" alt="nada" width="320"  height="150">';
+		        echo  				'</div>';
 		        echo                    '<div class="caption">' ;
 		        //echo                        '<h4 class="pull-right">$24.99</h4>';
-		        echo                        '<h4><a href="#">'.$resultado[$i]['nombre'].'</a>';
+		        echo                        '<h4><a href="#">'.$resultado[$i]['nombre'].'</a>';		        
 		        echo                        '</h4>';
-		        echo                        '<p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>';
+		        echo                        '<p>'.$resultado[$i]['descripcion'].'</p>';
 		        echo                    '</div>';
 		        echo                    '<div class="ratings">';
-		        echo                        '<p class="pull-right">15 reviews</p>';
-		        echo                       ' <p>';
-		        echo                            '<span class="glyphicon glyphicon-star"></span>';
-		        echo                            '<span class="glyphicon glyphicon-star"></span>';
-		        echo                            '<span class="glyphicon glyphicon-star"></span>';
-		        echo                            '<span class="glyphicon glyphicon-star"></span>';
-		        echo                            '<span class="glyphicon glyphicon-star"></span>';
+		        echo 					'<button type="button" class="btn btn-success">Reservar</button>';
 		        echo                        '</p>';
 		        echo                    '</div>';
 		        echo                '</div>';

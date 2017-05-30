@@ -94,7 +94,13 @@ font-size: 24px;
             <div class="col-md-3">
             <center>
                 <div>
-                    <img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
+                    <?php 
+                        if ($_SESSION['usuario']['rango']=='admin') {
+                            echo '<img class="img-circle img-responsive img-center" src="imgs/black-cat.png" alt="">';    
+                        }else{
+                            echo '<img class="img-circle img-responsive img-center" src="imgs/cat.png" alt="">'; 
+                        }
+                    ?>
                     <p class="lead"><?php echo $_SESSION['usuario']['usuario'] ?></p>
                 </div>          
             </center> 

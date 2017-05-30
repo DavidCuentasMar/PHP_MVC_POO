@@ -1,11 +1,7 @@
 <?php 
   session_start();
   if (isset($_SESSION['usuario'])) {
-    if ($_SESSION['usuario']['rango']=='admin') {
-      header('location: Vista/adminVista.php');
-    }else{
-      header('location: Vista/home.php');
-    }
+    header('location: Vista/home.php');
   }else{
 ?>
 <!doctype html>

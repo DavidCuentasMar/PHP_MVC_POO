@@ -4,6 +4,7 @@
     header('location: ../index.php');
   }else{
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +25,6 @@
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -61,9 +56,9 @@
         </div>
         <!-- /.container -->
     </nav>
-     
+
     <!-- Page Content -->
-    <div class="container">
+  <div class="container">
 
         <div class="row">
 
@@ -80,59 +75,30 @@
                     <p class="lead"><?php echo $_SESSION['usuario']['usuario'] ?></p>
                 </div>          
             </center> 
-             <div class="list-group">
-                    <a href="Reservas.php" class="list-group-item">Peticiones de Reservas</a>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Peticiones de Reservas</a>
                     <a href="#" class="list-group-item" onClick="ir()">Lugares</a>
                     <a href="AtencionCliente.php" class="list-group-item">Atención al Cliente</a>
-
                 </div>
-            </div>
+            </div>           
 
             <div class="col-md-9">
+
+                <div class="row carousel-holder">
+
+                    <div class="col-md-12">
+                        <center>Reservas</center>
+                    </div>
+
+                </div>
+
                 <div class="row">
-                    <div class="col-sm-6 col-lg-6 col-md-6">
-                        <div class="thumbnail">
-                            <img src="imgs/AuditorioCabecera01.jpg" alt="">
-                            <div class="caption">        
-                                <h4><a href="auditorios.php">Auditorios</a>
-                                </h4>
-                                <p>See more snippets like this online store item at </p>
-                            </div>
-                            <div class="ratings">
-                             
-                            </div>
-                        </div>
-                    </div>
-               
-                
-                    <div class="col-sm-6 col-lg-6 col-md-6">
-                        <div class="thumbnail" >
-                            <img src="imgs/salon1.jpg" alt="">
-                            <div class="caption">
-                                <h4><a href="salones.php">Salones</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row"> 
-                <div class="col-sm-6 col-lg-6 col-md-6">
-                        <div class="thumbnail">
-                            <img src="imgs/El_Campo_header.jpg" alt="">
-                            <div class="caption">
-                                <h4><a href="campos.php">Campos</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-lg-3 col-md-3">
-                    </div>
-                    
-                    <div class="col-sm-3 col-lg-3 col-md-3">
-                    </div>
-                </div>
+                    <?php 
+                        $xyz='reservas';
+                        require_once('../Controlador/LugarControlador.php');
+                    ?>
+                        
+
                 </div>
 
             </div>
@@ -164,6 +130,29 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/vendor/bootstrap.min.js"></script>
     <script>
+         function guardar(){
+          var formData = new FormData($("#formLugar")[0]);
+          $.ajax({
+            url:'../Controlador/LugarControlador.php',
+            type:'POST',
+            data:formData,
+            cache:false,
+            processData:false,
+            contentType:false,
+          }).done(function(resp){
+            alert(resp);
+            /*if(resp==='exito'){
+              $('#exito').show();
+              lista_libros('',1);
+              $("#formLibro")[0].reset();
+            }
+            else{
+              alert(resp);
+            }*/
+            
+          });
+          
+        }
         function logout()
         {
             $.ajax({
@@ -175,6 +164,9 @@
                 window.location.href = "../index.php";
             });
         }
+		function ir(){
+			location.href='vistalugares.php';
+		}
     </script>
 
 </body>

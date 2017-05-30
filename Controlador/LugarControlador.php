@@ -25,14 +25,45 @@
 			unset($LugarObjt);
 		}
 	}else{
-		if ($xyz=='ok') {
+		if (isset($xyz)) {
+			if ($xyz=='ok') {
 					$LugarObjt = new Lugar();
 					$LugarObjt -> showPlaces();
+			}
+			if ($xyz=='auditorios') {
+				$LugarObjt = new Lugar();
+				$LugarObjt -> llenar("auditorio");
+			}
+			if ($xyz=='salones') {
+				$LugarObjt = new Lugar();
+				$LugarObjt -> llenar("Salon");
+			}
+			if ($xyz=='campos') {
+				$LugarObjt = new Lugar();
+				$LugarObjt -> llenar("Campo");
+			}
+			if ($xyz=='reservas') {
+				$LugarObjt = new Lugar();
+				$LugarObjt -> showReservas();
+			}			
+		}else{		
+			$op = $_GET['op'];	
+			$id = $_GET['id'];
+			if ($op=='0') {
+				$LugarObjt = new Lugar();
+				$LugarObjt -> eliminarReserva($id);
+				unset($LugarObjt);	
+				header('location: ../Vista/Reservas.php');
+			}else{
+				$LugarObjt = new Lugar();
+				$LugarObjt -> reservarPlace($id);
+				unset($LugarObjt);	
+				
+			}	
+				
+			
 		}
-		if ($xyz=='auditorios') {
-			$LugarObjt = new Lugar();
-			$LugarObjt -> llenar("auditorio");
-		}
+		
 
 	}
 

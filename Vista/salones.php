@@ -74,6 +74,11 @@
                     <p class="lead"><?php echo $_SESSION['usuario']['usuario'] ?></p>
                 </div>          
             </center> 
+            <div class="list-group">
+                    <a href="Reservas.php" class="list-group-item">Peticiones de Reservas</a>
+                    <a href="vistaLugares.php" class="list-group-item">Lugares</a>
+                    <a href="AtencionCliente.php" class="list-group-item">Atención al Cliente</a>
+                </div>
             </div>
 
             <div class="col-md-9">

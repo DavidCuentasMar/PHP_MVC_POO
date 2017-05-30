@@ -65,12 +65,19 @@
             <div class="col-md-3">
             <center>
                 <div>
-                    <img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
+                    <?php 
+                        if ($_SESSION['usuario']['rango']=='admin') {
+                            echo '<img class="img-circle img-responsive img-center" src="imgs/black-cat.png" alt="">';    
+                        }else{
+                            echo '<img class="img-circle img-responsive img-center" src="imgs/cat.png" alt="">'; 
+                        }
+                    ?>
+                    
                     <p class="lead"><?php echo $_SESSION['usuario']['usuario'] ?></p>
                 </div>          
             </center> 
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Peticiones de Reservas</a>
+                    <a href="Reservas.php" class="list-group-item">Peticiones de Reservas</a>
                     <a href="#" class="list-group-item" onClick="ir()">Lugares</a>
                     <a href="AtencionCliente.php" class="list-group-item">Atención al Cliente</a>
                     <?php 
@@ -129,7 +136,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">  
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                <button type="button" href="home.php" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                 <button type="button" class="btn btn-success" onclick="guardar();">Guardar</button>
                             </div>
                         </div><!-- /.modal-content -->
@@ -149,13 +156,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="imgs/17092948.jpg" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="imgs/AuditorioCabecera01.jpg" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="imgs/finca-hotel-tucurinca19g.jpg" alt="">
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -173,6 +180,7 @@
                     <?php 
                         $xyz='ok';
                         require_once('../Controlador/LugarControlador.php');
+                    
                     ?>
                         
 

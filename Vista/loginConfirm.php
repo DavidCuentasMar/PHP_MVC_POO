@@ -139,11 +139,9 @@
                 if(resp=='0'){
                     $('#error').show();
                 }else{
-                    if (resp=='admin') {
-                        location.href='adminVista.php';
-                    }else{
+                    
                         location.href='home.php';
-                    }                                    
+                                                       
                 }
             });
         }        
